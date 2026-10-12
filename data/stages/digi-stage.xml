@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<stage zoom="0.9" name="Digi's Stage" folder="stages/digi/">
+	<sprite name="sky" sprite="sky" x="-934.0" y="-1498.0" scroll="0.3" scaleX="1.1" scaleY="0.9" updateHitbox="true"/>
+	<sprite name="back3" sprite="back 3" x="-685.0" y="-1600.0" scrollX="0.4" scrollY="0.45"/>
+	<sprite name="back2" sprite="back 2" x="-685.0" y="-1550.0" scrollX="0.6" scrollY="0.63"/>
+	<sprite name="back" sprite="back" x="-685.0" y="-1600.0" scroll="0.8"/>
+	<sprite name="floor" sprite="floor" x="-685.0" y="-1510.0"/>
+	<gf x="400" y="130"/>
+	<dad x="100" y="100"/>
+	<boyfriend x="770" y="100"/>
+	<sprite name="front" sprite="front" x="-885.0" y="-1500.0" scrollX="1.1" scrollY="0.9"/>
+</stage>
