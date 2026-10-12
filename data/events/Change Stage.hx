@@ -4,26 +4,29 @@ var stageToLoad:Array<String> = [];
 
 function postCreate()
 {
-    if (stageToLoad > 0)
-        return;
+    for (event in PlayState.SONG.events){ // preload
+        if (event.name == 'Change Stage')
+        {
+            for (stage in stageToLoad)
+                switchStage(stage);
 
-    for (stage in stageToLoad) // preload
-        stageToLoad.push(getEventFrom[0]);
+            switchStage(SONG.stage);
 
-    switchStage(SONG.stage);
-    trace("stage preload has been concluded");
+            trace("stage preload has been concluded");
+        }
+    }
 }
 
 function onEvent(s)
 {
-  var name = s.event.name;
-  var getEventFrom = s.event.params;
+    var name = s.event.name;
+    var getEventFrom = s.event.params;
 
-  if (name == "Change Stage")
-  {
-    stageToLoad.push(getEventFrom[0]);
-    switchStage(getEventFrom[0]);
-  }
+    if (name == "Change Stage")
+    {
+        stageToLoad.push(getEventFrom[0]);
+        switchStage(getEventFrom[0]);
+    }
 }
 
 function switchStage(name:String)
@@ -64,14 +67,22 @@ function switchStage(name:String)
 
                 remove(character);
 
-                var charPosName:String = switch(strLine.data.type) {
+                var baseCharPosName:String = switch(strLine.data.type) {
                     case 0: "dad";
                     case 1: "boyfriend";
                     case 2: "girlfriend";
                     default: "dad";
                 };
 
-                stage.applyCharStuff(character, charPosName, k);
+                var charPos = stage.characterPoses[character.curCharacter] != null 
+                    ? stage.characterPoses[character.curCharacter] 
+                    : (stage.characterPoses[baseCharPosName + k] != null ? stage.characterPoses[baseCharPosName + k] : stage.characterPoses[baseCharPosName]);
+
+                if (charPos != null) {
+                    insert(members.indexOf(charPos), character);
+                } else {
+                    add(character);
+                }
             }
         }
     }
