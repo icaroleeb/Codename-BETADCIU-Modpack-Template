@@ -142,7 +142,6 @@ function update(elapsed:Float)
 
 	if (!selectedSomethin)
 	{
-		// Atalhos de teclado diretos para garantir funcionamento no Codename
 		var upP = controls.UI_UP_P || FlxG.keys.justPressed.UP;
 		var downP = controls.UI_DOWN_P || FlxG.keys.justPressed.DOWN;
 		var leftP = controls.UI_LEFT_P || FlxG.keys.justPressed.LEFT;
